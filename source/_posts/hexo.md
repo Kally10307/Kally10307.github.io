@@ -38,3 +38,18 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+### 修改首页不显示全文
+
+设置 `themes` 文件对应的主题样式下的 `_config.yml` 配置文件
+
+```
+auto_excerpt:
+  enable: true
+  length: 150
+```
+然后运行命令行
+
+``` bash
+$ hexo d -g
+```
