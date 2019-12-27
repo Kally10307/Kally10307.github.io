@@ -39,6 +39,15 @@ $ hexo deploy
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
 
+### 一键提交并发布
+
+``` bash
+$ hexo deploy --generate
+$ hexo --generate deploy
+$ hexo d -g
+$ hexo -g d
+```
+
 ### 修改首页不显示全文
 
 设置 `themes` 文件对应的主题样式下的 `_config.yml` 配置文件

@@ -78,4 +78,7 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/Kally10307/Kally10307.github.io #https://github.com/Kally10307/Kally10307.github.io
+  branch: master
+  message:
