@@ -386,6 +386,17 @@
       {% endif %}
 
       {% if not is_index %}
+      <ul class="post-copyright">
+        <li class="post-copyright-author">
+          <strong>本文作者：</strong>{{ theme.author }}
+        </li>
+        <li class="post-copyright-link">
+          <strong>本文链接：</strong><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.title }}</a>
+        </li>
+        <li class="post-copyright-license">
+          <strong>版&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;权：</strong>可以转载，但请在文章显著位置注明出处！ <a href="https://kally10307.github.io" target="_blank">https://kally10307.github.io</a>
+        </li>
+      </ul>
       {% if theme.rating.enable or (theme.vkontakte_api.enable and theme.vkontakte_api.like) or (theme.facebook_sdk.enable and theme.facebook_sdk.like_button) or (theme.needmoreshare2.enable and theme.needmoreshare2.postbottom.enable) or (theme.baidushare and theme.baidushare.type === "button") %}
         <div class="post-widgets">
         {% if theme.rating.enable %}
