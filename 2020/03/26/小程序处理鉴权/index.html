@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="XSS攻击XSS攻击（cross-site scripting）跨站脚本攻击  Reflected XSS 基于反射的XSS攻击，主要依靠站点服务端返回脚本，在客户端触发执行从而发起web攻击。  Stored XSS 基于存储的XSS攻击，是通过发表带有恶意跨域脚本的帖子或文章，从而把恶意脚本存储在服务器，每个访问该帖子或文章的人都会触发执行。  DOM-based or local XSS 基">
-<meta name="keywords" content="前端,安全">
+  <meta name="description" content="前言最近在维护公司内部员工使用的小程序，需要根据企业微信 api 获取到 code，再通过请求登录接口拿到用户信息才能继续请求其他接口，也就是我们常遇到的鉴权问题。 正文由于是用户信息需要异步请求，如果在 App 的 onLaunch 事件里去获取用户信息的话，可能登录接口还没返回数据， Page 的业务接口已经在 onLoad 或 onShow 里进行请求了，这时没有用户信息会被接口拦截返回40">
+<meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端安全">
-<meta property="og:url" content="https://kally10307.github.io/2019/01/21/前端安全/index.html">
+<meta property="og:title" content="小程序处理鉴权">
+<meta property="og:url" content="https://kally10307.github.io/2020/03/26/小程序处理鉴权/index.html">
 <meta property="og:site_name" content="Kally10307">
-<meta property="og:description" content="XSS攻击XSS攻击（cross-site scripting）跨站脚本攻击  Reflected XSS 基于反射的XSS攻击，主要依靠站点服务端返回脚本，在客户端触发执行从而发起web攻击。  Stored XSS 基于存储的XSS攻击，是通过发表带有恶意跨域脚本的帖子或文章，从而把恶意脚本存储在服务器，每个访问该帖子或文章的人都会触发执行。  DOM-based or local XSS 基">
+<meta property="og:description" content="前言最近在维护公司内部员工使用的小程序，需要根据企业微信 api 获取到 code，再通过请求登录接口拿到用户信息才能继续请求其他接口，也就是我们常遇到的鉴权问题。 正文由于是用户信息需要异步请求，如果在 App 的 onLaunch 事件里去获取用户信息的话，可能登录接口还没返回数据， Page 的业务接口已经在 onLoad 或 onShow 里进行请求了，这时没有用户信息会被接口拦截返回40">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-27T10:03:32.639Z">
+<meta property="og:updated_time" content="2020-03-27T09:54:57.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端安全">
-<meta name="twitter:description" content="XSS攻击XSS攻击（cross-site scripting）跨站脚本攻击  Reflected XSS 基于反射的XSS攻击，主要依靠站点服务端返回脚本，在客户端触发执行从而发起web攻击。  Stored XSS 基于存储的XSS攻击，是通过发表带有恶意跨域脚本的帖子或文章，从而把恶意脚本存储在服务器，每个访问该帖子或文章的人都会触发执行。  DOM-based or local XSS 基">
+<meta name="twitter:title" content="小程序处理鉴权">
+<meta name="twitter:description" content="前言最近在维护公司内部员工使用的小程序，需要根据企业微信 api 获取到 code，再通过请求登录接口拿到用户信息才能继续请求其他接口，也就是我们常遇到的鉴权问题。 正文由于是用户信息需要异步请求，如果在 App 的 onLaunch 事件里去获取用户信息的话，可能登录接口还没返回数据， Page 的业务接口已经在 onLoad 或 onShow 里进行请求了，这时没有用户信息会被接口拦截返回40">
 
 
 
 
 
 
-  <link rel="canonical" href="https://kally10307.github.io/2019/01/21/前端安全/">
+  <link rel="canonical" href="https://kally10307.github.io/2020/03/26/小程序处理鉴权/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>前端安全 | Kally10307</title>
+  <title>小程序处理鉴权 | Kally10307</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kally10307.github.io/2019/01/21/前端安全/">
+    <link itemprop="mainEntityOfPage" href="https://kally10307.github.io/2020/03/26/小程序处理鉴权/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kally Jiang">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端安全
+          <h1 class="post-title" itemprop="name headline">小程序处理鉴权
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="创建时间：2019-01-21 15:03:57" itemprop="dateCreated datePublished" datetime="2019-01-21T15:03:57+08:00">2019-01-21</time>
+              <time title="创建时间：2020-03-26 18:35:19" itemprop="dateCreated datePublished" datetime="2020-03-26T18:35:19+08:00">2020-03-26</time>
             
 
             
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-27 18:03:32" itemprop="dateModified" datetime="2019-12-27T18:03:32+08:00">2019-12-27</time>
+                <time title="修改时间：2020-03-27 17:54:57" itemprop="dateModified" datetime="2020-03-27T17:54:57+08:00">2020-03-27</time>
               
             
           </span>
@@ -417,7 +417,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/小程序/" itemprop="url" rel="index"><span itemprop="name">小程序</span></a></span>
 
                 
                 
@@ -458,15 +458,24 @@
       
 
       
-        <h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><p>XSS攻击（cross-site scripting）跨站脚本攻击</p>
-<ul>
-<li><p>Reflected XSS 基于反射的XSS攻击，主要依靠站点服务端返回脚本，在客户端触发执行从而发起web攻击。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在维护公司内部员工使用的小程序，需要根据企业微信 <code>api</code> 获取到 <code>code</code>，再通过请求登录接口拿到用户信息才能继续请求其他接口，也就是我们常遇到的鉴权问题。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>由于是用户信息需要异步请求，如果在 <code>App</code> 的 <code>onLaunch</code> 事件里去获取用户信息的话，可能登录接口还没返回数据， <code>Page</code> 的业务接口已经在 <code>onLoad</code> 或 <code>onShow</code> 里进行请求了，这时没有用户信息会被接口拦截返回401，由于这种跨程序的生命周期的，请求顺序变得不好处理了。</p>
+<p>那么有其他好的处理方式吗？</p>
+<p>首先想到的是，我们是否可以通过页面生命周期统一的拦截方式来处理，比方说框架层面的<code>JPage.mixin</code> 方式去统一处理呢。其实这样还是跟<code>App</code>和<code>Page</code>的矛盾一样。</p>
+<p>然后，继续考虑，这其实是因为接口需要用户信息而产生的拦截，如果想到这个问题的本质，就应该想到，就是对接口请求头参数进行拦截处理。具体操作如下：</p>
+<ol>
+<li><p>还是要在 <code>App</code> 的  <code>onLaunch</code> 生命周期里进行用户信息请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onLaunch() &#123;</span><br><span class="line">    wx.clearStorageSync();</span><br><span class="line">    <span class="comment">// 请求用户信息，并将返回的Promise用变量保存起来</span></span><br><span class="line">    <span class="comment">// catch错误，防止报错</span></span><br><span class="line">    <span class="keyword">this</span>.userInfoPromise = loginBySystemInfo(<span class="literal">true</span>).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      goToLogin();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Stored XSS 基于存储的XSS攻击，是通过发表带有恶意跨域脚本的帖子或文章，从而把恶意脚本存储在服务器，每个访问该帖子或文章的人都会触发执行。</p>
+</ol>
+<ol start="2">
+<li><p>然后用框架的拦截器拦截请求开始的请求头数据，因为我们要在这里统一将用户信息加到请求头中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">jgb.intercept(<span class="string">'request'</span>, <span class="string">'begin'</span>, <span class="keyword">async</span> (opts) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> header = opts.header || &#123;&#125;;</span><br><span class="line">    <span class="keyword">const</span> app = getApp();</span><br><span class="line">    <span class="keyword">if</span> (app.userInfoPromise) &#123;</span><br><span class="line">        <span class="keyword">await</span> app.userInfoPromise;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    opts.header = <span class="built_in">Object</span>.assign(</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="comment">// ...</span></span><br><span class="line">        &#125;,</span><br><span class="line">        header</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> opts;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>App</code> <code>onLaunch</code> 时去请求登录接口，页面中其他接口请求就进行 拦截，直至用户登录接口请求完成才可以继续请求。</p>
 </li>
-<li><p>DOM-based or local XSS 基于DOM或者本地的XSS攻击。</p>
+<li><p>至此已经完成了所有拦截，而且不用特意跳转到登录页面，但登录失败的情况还需要另外处理。</p>
 </li>
-</ul>
+</ol>
 
       
     </div>
@@ -490,9 +499,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
-          
-            <a href="/tags/安全/" rel="tag"># 安全</a>
+            <a href="/tags/小程序/" rel="tag"># 小程序</a>
           
         </div>
       
@@ -503,7 +510,7 @@
           <strong>本文作者：</strong>Kally Jiang
         </li>
         <li class="post-copyright-link">
-          <strong>本文链接：</strong><a href="/2019/01/21/前端安全/" title="前端安全">前端安全</a>
+          <strong>本文链接：</strong><a href="/2020/03/26/小程序处理鉴权/" title="小程序处理鉴权">小程序处理鉴权</a>
         </li>
         <li class="post-copyright-license">
           <strong>版&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;权：</strong>可以转载，但请在文章显著位置注明出处！ <a href="https://kally10307.github.io" target="_blank">https://kally10307.github.io</a>
@@ -516,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/10/hexo/" rel="next" title="hexo">
-                <i class="fa fa-chevron-left"></i> hexo
+              <a href="/2019/12/31/回首2019，展望2020/" rel="next" title="回首2019，展望2020">
+                <i class="fa fa-chevron-left"></i> 回首2019，展望2020
               </a>
             
           </div>
@@ -525,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/19/prop-types/" rel="prev" title="prop-types">
-                prop-types <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS攻击"><span class="nav-number">1.</span> <span class="nav-text">XSS攻击</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
             
 
           </div>
